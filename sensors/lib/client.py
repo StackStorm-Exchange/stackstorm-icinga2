@@ -17,9 +17,9 @@ class Client:
         self.conn = None
         self.buffer = ''
         self.keep_trying = 1
-        self.api_url = api_url
-        self.api_user = api_user
-        self.api_password = api_password
+        self.api_url = api_url.encode('utf-8')
+        self.api_user = api_user.encode('utf-8')
+        self.api_password = api_password.encode('utf-8')
 
         signal.signal(signal.SIGINT, self.handle_ctrl_c)
 
