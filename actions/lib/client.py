@@ -60,7 +60,7 @@ class Client:
         try:
             event = json.loads(self.buffer)
             update_body = True
-        except:
+        except Exception:
             # no json found
             update_body = False
 
@@ -84,7 +84,7 @@ class Client:
             self.setup_connection()
             try:
                 self.conn.perform()
-            except:
+            except Exception:
                 # Network error, use linear back off up to 16 seconds
                 if self.keep_trying == 0:
                     continue

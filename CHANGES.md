@@ -1,9 +1,13 @@
 # Change Log
 
+# 0.3.3
+
+- Minor linting
+
 # 0.3.1
 
 - Force encoding of api\_user, api\_password, api\_url to `utf-8` to work with
-older pycurl versions
+  older pycurl versions
 
 # 0.3.0
 
