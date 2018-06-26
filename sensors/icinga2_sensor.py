@@ -15,7 +15,7 @@ class Icinga2ReqSensor(Sensor):
     def setup(self):
         self.logger = self._sensor_service.get_logger(__name__)
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        requests.packages.urllib3.disable_warnings(InsecureRequestWarning)  # pylint: disable=no-member
+        requests.packages.urllib3.disable_warnings(InsecureRequestWarning)  # pylint: disable=E1101
         self.r = None
         self.buffer = ''
         self.eventstream_type = self._config['eventstream_type']
@@ -151,8 +151,7 @@ class Icinga2ReqSensor(Sensor):
         # vars. Modify it based on need
         data = {
             "joins": ["host.name", "host.address", "host.address6", "host.vars"],
-            "attrs": ["acknowledgement"]
-            }
+            "attrs": ["acknowledgement"]}
         text = ""
         ack = False
         j = {}
