@@ -3,9 +3,9 @@ description: Get Icinga2 service object
 enabled: true
 entry_point: get_service.py
 parameters:
-  services:
-    type: "array"
+  service:
+    type: "string"
     required: false
-    default: []
+    description: "Specific service, e.g. ewc.extremenetworks.com!users. Returns all services if not provided."
 name: get_service
 runner_type: "python-script"

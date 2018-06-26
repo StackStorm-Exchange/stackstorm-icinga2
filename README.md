@@ -15,6 +15,7 @@ to `/opt/stackstorm/configs/icinga2.yaml` and edit as required.
 * `api_state_change_password` - password for the user name mentioned above
 * `api_user` - API user name to query Icinga2 host for objects
 * `api_password` - password for the API user
+* `cert_file` - path to optional client certificate for API authentication
 
 You can also use dynamic values from the datastore. See the
 [docs](https://docs.stackstorm.com/reference/pack_configs.html) for more info.
@@ -22,8 +23,8 @@ You can also use dynamic values from the datastore. See the
 ## Actions
 
 * `get_status` - retrieves status from Icinga2 host
-* `get_host` - retrieves host objects from Icinga2 host, a list of `hosts` can be provided to narrow down the result
-* `get_service` - retrieves service objects from Icinga2 host, a list of `services` can be provided to narrow down the result
+* `get_host` - retrieves host objects from Icinga2 host
+* `get_service` - retrieves service objects from Icinga2 host
 
 ## Sensor payload
 
@@ -100,7 +101,3 @@ As of now, sensor is configured to catch only `StateChange` events from Icinga2 
 ```
 
 Currently, sensor takes the `host`, `service`, `state`, `state_type`, `type` and `check_result` variables and passes it as a payload to the trigger. All that data can be used in the rule and passed to actions as well.
-
-## TODO
-
-* Re-write actions & sensors to use requests instead of pycurl

@@ -1,11 +1,11 @@
 ---
-description: Get Icinga2 host object
+description: Get Icinga2 host object, or list of hosts
 enabled: true
 entry_point: get_host.py
 parameters:
-  hosts:
-    type: "array"
+  host:
+    type: "string"
     required: false
-    default: []
+    description: "Specific host to query. If not provided, all hosts returned."
 name: get_host
 runner_type: "python-script"

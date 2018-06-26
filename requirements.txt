@@ -1,3 +1,8 @@
 # Place any required python libraries here. Will be installed into a pack specific virtualenv
-pycurl==7.19.0
-
+icinga2api>=0.6.1,<0.7
+requests>=2.10.0
+requests[security]
+pyopenssl
+ndg-httpsclient
+pyasn1
+certifi

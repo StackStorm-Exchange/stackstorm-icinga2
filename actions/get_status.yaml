@@ -4,3 +4,8 @@ enabled: true
 entry_point: get_status.py
 name: get_status
 runner_type: "python-script"
+parameters:
+    component:
+        type: string
+        required: false
+        description: Return status for single component

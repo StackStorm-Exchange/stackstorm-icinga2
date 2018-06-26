@@ -24,3 +24,7 @@
     type: "string"
     secret: true
     required: true
+  cert_file:
+    description: "Path to (CA) Certificate file for Icinga2 API Access"
+    type: "string"
+    required: false

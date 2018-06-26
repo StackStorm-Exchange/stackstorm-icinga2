@@ -1,0 +1,27 @@
+---
+  class_name: "Icinga2ReqSensor"
+  entry_point: "icinga2req_sensor.py"
+  description: "Sensor for Icinga2 events"
+  trigger_types:
+    -
+      name: "generic_event"
+      description: "Icinga2 Generic Event"
+      payload_schema:
+        type: "object"
+        properties:
+          service:
+            type: "string"
+          host:
+            type: "string"
+          state:
+            type: "integer"
+          access:
+            type: "object"
+          monitoring_source: 
+            type: "string"
+          output:
+            type: "string"
+          var:
+            type: "object"
+          timestamp:
+            type: "integer"
