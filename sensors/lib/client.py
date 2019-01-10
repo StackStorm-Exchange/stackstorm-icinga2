@@ -27,7 +27,7 @@ class Client:
         if self._sensor is not None:
             self._sensor.logger.info('SIGINT receivied')
         else:
-            print 'You pressed Ctrl+C!'
+            print('You pressed Ctrl+C!')
         self.abort_session()
 
     def abort_session(self):
@@ -63,11 +63,11 @@ class Client:
             if self._sensor is not None:
                 self._sensor.process_event(event)
             else:
-                print event
+                print(event)
 
     def on_progress(self, d_total, downloaded, u_total, uploaded):
         pass
-        # print "on_progress called"
+        # print("on_progress called")
 
     def __del__(self):
         self.conn.close()
@@ -82,7 +82,7 @@ class Client:
             if self._sensor is not None:
                 self._sensor.logger.info('keep trying = %i', self.keep_trying)
             else:
-                print "keep trying = %i" % self.keep_trying
+                print("keep trying = %i" % (self.keep_trying))
             self.setup_connection()
             try:
                 self.conn.perform()
@@ -95,8 +95,8 @@ class Client:
                     self._sensor.logger.info('Waiting %s seconds before trying again',
                                              backoff_network_error)
                 else:
-                    print 'Network error: %s' % self.conn.errstr()
-                    print 'Waiting %s seconds before trying again' % backoff_network_error
+                    print('Network error: %s' % self.conn.errstr())
+                    print('Waiting %s seconds before trying again' % backoff_network_error)
                 time.sleep(backoff_network_error)
                 backoff_network_error = min(backoff_network_error + 1, 16)
                 continue
@@ -107,7 +107,7 @@ class Client:
                 if self._sensor is not None:
                     self._sensor.logger.info('Rate limit, waiting %s seconds', backoff_rate_limit)
                 else:
-                    print 'Rate limit, waiting %s seconds' % backoff_rate_limit
+                    print('Rate limit, waiting %s seconds' % backoff_rate_limit)
                 time.sleep(backoff_rate_limit)
                 backoff_rate_limit *= 2
             elif sc == 401:
@@ -117,7 +117,7 @@ class Client:
                         'Authentication error, check user/password, waiting %s seconds',
                         backoff_rate_limit)
                 else:
-                    print 'Authentication error, waiting %s seconds' % backoff_rate_limit
+                    print('Authentication error, waiting %s seconds' % backoff_rate_limit)
                 time.sleep(backoff_rate_limit)
                 backoff_rate_limit *= 2
             elif sc == 404:
@@ -127,7 +127,7 @@ class Client:
                         'Authorization error, check permissions, waiting %s seconds',
                         backoff_rate_limit)
                 else:
-                    print 'Authorization error, waiting %s seconds' % backoff_rate_limit
+                    print('Authorization error, waiting %s seconds' % backoff_rate_limit)
                 time.sleep(backoff_rate_limit)
                 backoff_rate_limit *= 2
             else:
@@ -136,7 +136,7 @@ class Client:
                     self._sensor.logger.info('HTTP error %s, %s', sc, self.conn.errstr())
                     self._sensor.logger.info('Waiting %s seconds', backoff_http_error)
                 else:
-                    print 'HTTP error %s, %s' % (sc, self.conn.errstr())
-                    print 'Waiting %s seconds' % backoff_http_error
+                    print('HTTP error %s, %s' % (sc, self.conn.errstr()))
+                    print('Waiting %s seconds' % backoff_http_error)
                 time.sleep(backoff_http_error)
                 backoff_http_error = min(backoff_http_error * 2, 320)
