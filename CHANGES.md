@@ -1,5 +1,9 @@
 # Change Log
 
+# 0.4.0
+
+- Major rewrite to remove pycurl dependency. Now built on top of icinga2api library, which uses `requests()`
+
 # 0.3.3
 
 - Minor linting

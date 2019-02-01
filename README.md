@@ -1,9 +1,12 @@
-# Icinga2 Integration Pack for Stackstorm
+# Icinga2 Integration Pack for StackStorm
 
 ## Description
 
 Icinga2 version 2.4.0 introduced an API, making it possible to subscribe to Icinga2. So far only `StateChange` event type is supported.
 Read http://docs.icinga.org/icinga2/latest/doc/module/icinga2/toc#!/icinga2/latest/doc/module/icinga2/chapter/icinga2-api#icinga2-api for more information on Icinga2 API. 
+
+**NOTE**: This pack has had a major overhaul as of version 0.4.0. Some options have changed, and the sensor has been
+rewritten. This may break existing workflows. 
 
 ## Configuration
 
@@ -15,15 +18,18 @@ to `/opt/stackstorm/configs/icinga2.yaml` and edit as required.
 * `api_state_change_password` - password for the user name mentioned above
 * `api_user` - API user name to query Icinga2 host for objects
 * `api_password` - password for the API user
+* `certificate` - Certificate file for client authentication, rather than username/password
+* `key` - Private key file used for client authentication. Key material may be provided in certificate file above
+* `ca_certificate` - optional CA bundle to validate the server certificate
 
 You can also use dynamic values from the datastore. See the
 [docs](https://docs.stackstorm.com/reference/pack_configs.html) for more info.
 
 ## Actions
 
-* `get_status` - retrieves status from Icinga2 host
-* `get_host` - retrieves host objects from Icinga2 host, a list of `hosts` can be provided to narrow down the result
-* `get_service` - retrieves service objects from Icinga2 host, a list of `services` can be provided to narrow down the result
+* `get_status` - retrieves status from Icinga2 host. Can filter by specific component
+* `get_host` - retrieves a host object from Icinga2. If not specified, all hosts are returned
+* `get_service` - retrieves a service object from Icinga2. If not specified, all services are returned
 
 ## Sensor payload
 
@@ -100,7 +106,3 @@ As of now, sensor is configured to catch only `StateChange` events from Icinga2 
 ```
 
 Currently, sensor takes the `host`, `service`, `state`, `state_type`, `type` and `check_result` variables and passes it as a payload to the trigger. All that data can be used in the rule and passed to actions as well.
-
-## TODO
-
-* Re-write actions & sensors to use requests instead of pycurl
