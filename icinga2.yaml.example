@@ -2,5 +2,3 @@
 api_url: "https://localhost:5665/v1"
 api_user: "root"
 api_password: "abcdefghijklmnopqrstuvwxyz"
-api_state_change_user: "operator"
-api_state_change_password: "passwordisunknown"

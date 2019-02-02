@@ -14,16 +14,6 @@
     type: string
     secret: true
     required: false
-  api_state_change_user:
-    description: "API user name for querying API state changes"
-    type: string
-    secret: false
-    required: false
-  api_state_change_password:
-    description: "API password for querying API state changes"
-    type: string
-    secret: true
-    required: false
   certificate:
     description: "Path to client certificate if using certificate authentication instead of username/password"
     type: string

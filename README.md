@@ -6,7 +6,8 @@ Icinga2 version 2.4.0 introduced an API, making it possible to subscribe to Icin
 Read http://docs.icinga.org/icinga2/latest/doc/module/icinga2/toc#!/icinga2/latest/doc/module/icinga2/chapter/icinga2-api#icinga2-api for more information on Icinga2 API. 
 
 **NOTE**: This pack has had a major overhaul as of version 0.4.0. Some options have changed, and the sensor has been
-rewritten. This may break existing workflows. 
+rewritten. This may break existing workflows. Note the sensor now uses the same username/password as actions. 
+You can also use certificates for authentication.
 
 ## Configuration
 

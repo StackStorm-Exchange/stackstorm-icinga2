@@ -12,3 +12,5 @@ python_versions:
   - "3"
 author: Igor Cherkaev
 email: emptywee@protonmail.ch
+contributors:
+  - Lindsay Hill <lindsay@stackstorm.com>
