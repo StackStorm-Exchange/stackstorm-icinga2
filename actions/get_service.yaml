@@ -9,4 +9,4 @@ parameters:
     type: string
     required: false
     default: ''
-    description: "Specific host object to return. If not specified, all hosts are returned."
+    description: "Specific service object to return. If not specified, all services are returned."
