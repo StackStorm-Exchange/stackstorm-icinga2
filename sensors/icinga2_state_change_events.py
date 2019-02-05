@@ -1,6 +1,6 @@
-from time import sleep
 import json
 import requests
+import eventlet
 from icinga2api.client import Client
 from st2reactor.sensor.base import Sensor
 requests.packages.urllib3.disable_warnings()   # pylint: disable=no-member
@@ -56,7 +56,7 @@ class Icinga2StateChangeSensor(Sensor):
                 self.logger.info('Icinga2StateChangeSensor Exception %s', str(ex))
 
             # Wait between retries if Icinga API is disconnected
-            sleep(5)
+            eventlet.sleep(5)
 
     def process_event(self, event):
         self.logger.info('Processing event: %s', event)
