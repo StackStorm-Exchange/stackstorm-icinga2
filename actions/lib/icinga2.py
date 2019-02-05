@@ -19,20 +19,16 @@ class Icinga2Action(Action):
 
     def _get_client(self):
         api_url = self.myconfig['api_url']
+        api_user = self.myconfig.get('api_user', None)
+        api_password = self.myconfig.get('api_password', None)
+        certificate = self.myconfig.get('certificate', None)
 
-        if ('api_user' in self.myconfig and
-                self.myconfig['api_user'] is not None and
-                self.myconfig['api_user']):
-            if 'api_password' in self.myconfig and self.myconfig['api_password'] is not None:
-                api_user = self.myconfig['api_user']
-                api_password = self.myconfig['api_password']
+        if (api_user is not None and api_user):
+            if api_password is not None:
                 return Client(api_url, api_user, api_password)
             else:
                 raise ValueError("Username defined with no password.")
-        elif ('certificate' in self.myconfig and
-              self.myconfig['certificate'] is not None and
-              self.myconfig['certificate']):
-            certificate = self.myconfig['certificate']
+        elif (certificate is not None and certificate):
             key = self.myconfig.get('key', '')
             ca_certificate = self.myconfig.get('ca_certificate', '')
             return Client(api_url, certificate=certificate, key=key, ca_certificate=ca_certificate)

@@ -21,21 +21,19 @@ class Icinga2StateChangeSensor(Sensor):
         self.types = ['StateChange']
         self.queue = 'state_change'
 
-        self.api_url = self._config['api_url']
+        self.api_url = self._config.get('api_url', None)
+        self.api_user = self._config.get('api_user', None)
+        self.api_password = self._config.get('api_password', None)
+        self.certificate = self._config.get('certificate', None)
 
-        if ('api_user' in self._config and self._config['api_user'] is not None and  # noqa: W504
-                self._config['api_user']):
-            if 'api_password' in self._config and self._config['api_password'] is not None:
-                self.api_user = self._config['api_user']
-                self.api_password = self._config['api_password']
+        if (self.api_user is not None and self.api_user):
+            if self.api_password is not None:
                 self.client = Client(self.api_url, self.api_user, self.api_password)
                 self.logger.info('Icinga2StateChangeSensor initialized with URL: %s User: %s',
                                  self.api_url, self.api_user)
             else:
                 raise ValueError("Username defined with no password.")
-        elif ('certificate' in self._config and self._config['certificate'] is not None
-              and self._config['certificate']):  # noqa: W503
-            self.certificate = self._config['certificate']
+        elif (self.certificate is not None and self.certificate):
             self.key = self._config.get('key', '')
             self.ca_certificate = self._config.get('ca_certificate', '')
             self.client = Client(self.api_url, certificate=self.certificate, key=self.key,
