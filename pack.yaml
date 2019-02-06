@@ -6,10 +6,11 @@ keywords:
   - icinga
   - monitoring
   - alerting
-version: 0.3.3
+version: 0.4.1
 python_versions:
-  # NOTE: Right now it depends on pycurl which doesn't work with Python 3.
-  # Should update it to use requests instead.
   - "2"
+  - "3"
 author: Igor Cherkaev
 email: emptywee@protonmail.ch
+contributors:
+  - Lindsay Hill <lindsay@stackstorm.com>
