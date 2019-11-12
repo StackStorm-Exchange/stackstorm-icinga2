@@ -1,0 +1,22 @@
+---
+name: get_filtered_component
+runner_type: "python-script"
+description: Get all Icinga2 hosts or services objects, filtered
+enabled: true
+entry_point: get_filtered_component.py
+parameters:
+  object_type:
+    type: "string"
+    required: false
+    description: "Type of object."
+    default: 'Host'
+  filters:
+    type: "string"
+    required: false
+    description: "Filters matched object(s)."
+    default: ''
+  filter_vars:
+    type: "object"
+    required: false
+    description: "Variables used in the filters expression."
+    default: ''

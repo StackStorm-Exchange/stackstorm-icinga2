@@ -1,5 +1,9 @@
 # Change Log
 
+# 0.5.0
+
+- Add an action to retrieve objects with filters from icinga
+
 # 0.4.1
 
 - Style cleanup from 0.4.0. No functionality changes

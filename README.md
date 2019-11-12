@@ -31,6 +31,7 @@ You can also use dynamic values from the datastore. See the
 * `get_status` - retrieves status from Icinga2 host. Can filter by specific component
 * `get_host` - retrieves a host object from Icinga2. If not specified, all hosts are returned
 * `get_service` - retrieves a service object from Icinga2. If not specified, all services are returned
+* `get_filtered_component` - retrieves objects, hosts or services from Icinga2 matching filters. (https://icinga.com/docs/icinga2/latest/doc/12-icinga2-api/#icinga2-api-filters)
 
 ## Sensor payload
 
