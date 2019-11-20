@@ -60,8 +60,12 @@ class Icinga2StateChangeSensor(Sensor):
         self.logger.info('Processing event: %s', event)
         payload = {}
         event = json.loads(event)
-        payload['service'] = event['service']
-        payload['host'] = event['host']
+        if 'service' in event:
+            payload['service'] = event['service']
+            payload['check_type'] = 'service'
+        else:
+            payload['host'] = event['host']
+            payload['check_type'] = 'host'
         payload['state'] = event['state']
         payload['state_type'] = event['state_type']
         payload['type'] = event['type']

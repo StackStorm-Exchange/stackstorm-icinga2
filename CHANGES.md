@@ -1,5 +1,9 @@
 # Change Log
 
+# 0.5.1
+
+- Add a variable in the payload sensor to easily differenciate host and service type for a state change
+
 # 0.5.0
 
 - Add an action to retrieve objects with filters from icinga
