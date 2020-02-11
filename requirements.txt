@@ -1,1 +1,1 @@
--e git+https://github.com/fmnisme/python-icinga2api.git@9a1a3cc7968d6c72bf49e97ef387b2824e6835e9#egg=icinga2api
+git+https://github.com/nzlosh/python-icinga2api.git#egg=icinga2api
