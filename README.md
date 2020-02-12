@@ -3,6 +3,10 @@
 > Icinga2 Monitoring
 Igor Cherkaev <emptywee@protonmail.ch>
 
+### Contributors
+- Lindsay Hill <lindsay@stackstorm.com>
+
+
 ## Description
 
 Icinga2 version 2.4.0 introduced an API, making it possible to subscribe to Icinga2. So far only `StateChange` event type is supported. Read http://docs.icinga.org/icinga2/latest/doc/module/icinga2/toc#!/icinga2/latest/doc/module/icinga2/chapter/icinga2-api#icinga2-api for more information on Icinga2 API. 
