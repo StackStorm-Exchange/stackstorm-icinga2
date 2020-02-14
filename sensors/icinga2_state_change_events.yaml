@@ -1,6 +1,6 @@
 ---
   class_name: "Icinga2StateChangeSensor"
-  enabled: true 
+  enabled: false 
   entry_point: "icinga2_state_change_events.py"
   description: "Sensor for Icinga2 StateChange events."
   trigger_types:
