@@ -1,26 +1,43 @@
 # Change Log
 
-# 0.5.0
+## [0.6.0] 2020-05-14
 
-- Add an action to retrieve objects with filters from icinga
+### Added
+  - Added changestate event timestamp to stackstorm trigger payload.
 
-# 0.4.1
+### Changed
+  - Updated documentation to use pack2md .
+  - Formatted code using Black.
+  - Pointed icinga2api python module to nzlosh upstream for python3.7 patches.
+  - Made service field optional in changestate event.
 
-- Style cleanup from 0.4.0. No functionality changes
+## [0.5.0]
 
-# 0.4.0
+### Added
+  - Add an action to retrieve objects with filters from icinga
 
-- Major rewrite to remove pycurl dependency. Now built on top of icinga2api library, which uses `requests()`
+## [0.4.1]
 
-# 0.3.3
+### Changed
+  - Style cleanup from 0.4.0. No functionality changes
 
-- Minor linting
+## [0.4.0]
 
-# 0.3.1
+### Changed
+  - Major rewrite to remove pycurl dependency. Now built on top of icinga2api library, which uses `requests()`
 
-- Force encoding of api\_user, api\_password, api\_url to `utf-8` to work with
-  older pycurl versions
+## [0.3.3]
 
-# 0.3.0
+### Changed
+  - Minor linting
 
-- Rename `config.yaml` to `config.schema.yaml` and update to use schema.
+## [0.3.1]
+
+### Changed
+  - Force encoding of api\_user, api\_password, api\_url to `utf-8` to work with
+    older pycurl versions
+
+## [0.3.0]
+
+### Changed
+  - Rename `config.yaml` to `config.schema.yaml` and update to use schema.
