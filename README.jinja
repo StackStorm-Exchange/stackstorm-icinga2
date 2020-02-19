@@ -1,11 +1,12 @@
-# icinga2 integration pack v0.5.0
+# {{ pack["pack.yaml"].name }} integration pack v{{ pack["pack.yaml"].version }}
 
-> Icinga2 Monitoring
-Igor Cherkaev <emptywee@protonmail.ch>
+> {{ pack["pack.yaml"].description }}
+{{ pack["pack.yaml"].author }} <{{ pack["pack.yaml"].email }}>
 
 ### Contributors
-- Lindsay Hill <lindsay@stackstorm.com>
-
+{% for contributor in pack["pack.yaml"].contributors -%}
+  - {{ contributor }}
+{% endfor %}
 
 ## Description
 
@@ -20,64 +21,48 @@ The following options are required to be configured for the pack to work correct
 
 | Option | Type | Required | Secret | Description |
 |---|---|---|---|---|
-| `api_url` | string | True | False | URL to the API stream, e.g. 'https://localhost:5665/v1' |
-| `api_user` | string | False | False | API user name to query Icinga2 host for objects |
-| `api_password` | string | False | True | API password for querying Icinga2 for objects |
-| `certificate` | string | False | False | Path to client certificate if using certificate authentication instead of username/password |
-| `key` | string | False | False | Path to client private key if using certificate authentication instead of username/password |
-| `ca_file` | string | False | False | Optional path to CA bundle for validating server-side certificate |
-
+{% for key, value in pack["config.schema.yaml"].items() -%}
+| `{{ key }}` | {{ value.type }} | {{ value.required }} | {{ value.secret }} | {{ value.description }} |
+{% endfor %}
 
 You can also use dynamic values from the datastore. See the [docs](https://docs.stackstorm.com/reference/pack_configs.html) for more info.
 
 ## Actions
 
-
+{% if actions | length > 0 %}
 The pack provides the following actions:
 
-### get_filtered_component
-_Get all Icinga2 hosts or services objects, filtered_
+{% for key, value in actions.items() -%}
+### {{ value.name }}
+_{{ value.description }}_
 
 | Parameter | Type | Required | Secret | Description |
 |---|---|---|---|---|
-| `object_type` | string | False | default | _Type of object._ |
-| `filters` | string | False | default | _Filters matched object(s)._ |
-| `filter_vars` | object | False | default | _Variables used in the filters expression._ |
-### get_status
-_Get Icinga2 status_
-
-| Parameter | Type | Required | Secret | Description |
-|---|---|---|---|---|
-| `component` | string | False | default | _Specific component to get status for. If not specified, complete status is returned._ |
-### get_service
-_Get Icinga2 service object_
-
-| Parameter | Type | Required | Secret | Description |
-|---|---|---|---|---|
-| `service` | string | False | default | _Specific service object to return. If not specified, all services are returned._ |
-### get_host
-_Get all Icinga2 host objects, or individual host_
-
-| Parameter | Type | Required | Secret | Description |
-|---|---|---|---|---|
-| `host` | string | False | default | _Specific host object to return. If not specified, all hosts are returned._ |
+{% for p_key, p_value in value.parameters.items() -%}
+| `{{ p_key }}` | {{ p_value.type | default("n/a") }} | {{ p_value.required | default("default") }} | {{ p_value.secret | default("default") }} | _{{ p_value.description | default("Unavailable") }}_ |
+{% endfor -%}
 
 
+{% endfor %}
+{% else %}
+There are no actions available for this pack.
+{% endif %}
 
 ## Sensors
-
+{% if sensors | length > 0 %}
 The following sensors and triggers are provided:
+{% for key, value in sensors.items() %}
+### Class {{ value.class_name }}
+_{{ value.description }}_
 
-### Class Icinga2StateChangeSensor
-_Sensor for Icinga2 StateChange events._
-
+{% for trigger in value.trigger_types -%}
 | Trigger Name | Description |
 |---|---|
-| `event.state_change` | _Icinga2 State Change event._ |
+| `{{ trigger.name }}` | _{{ trigger.description | default("Unavailable") }}_ |
+{% endfor %}
 
 
-
-
+{% endfor %}
 
 ## Sensor payload
 
@@ -156,6 +141,8 @@ As of now, sensor is configured to catch only `StateChange` events from Icinga2 
 Currently, sensor takes the `host`, `service`, `state`, `state_type`, `type` and `check_result` variables and passes it as a payload to the trigger. All that data can be used in the rule and passed to actions as well.
 
 
-
+{% else %}
+There are no sensors available for this pack.
+{% endif %}
 
 <sub>Documentation generated using [pack2md](https://github.com/nzlosh/pack2md)</sub>
