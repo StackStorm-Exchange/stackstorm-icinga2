@@ -73,7 +73,7 @@ class Icinga2StateChangeSensor(Sensor):
     def process_event(self, event):
         self.logger.info("Processing event: %s", event)
         payload = {}
-        event = event.replace('\\','\\\\')
+        event = event.replace('\\', '\\\\')
         event = json.loads(event, strict=False)
         payload["service"] = event.get("service", "n/a")
         payload["host"] = event["host"]
