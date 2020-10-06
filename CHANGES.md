@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.6.1] 2020-10-05
+
+### Added
+  - Added a function to escape all backslashes in the JSON object before it is loaded
+
+### Changed
+  - Adjusted the JSON load with strict=false so that control characters are allowed in the strings
+
 ## [0.6.0] 2020-05-14
 
 ### Added
