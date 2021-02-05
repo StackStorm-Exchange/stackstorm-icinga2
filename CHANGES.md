@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.0] 2021-02-05
+
+* Drop Python 2.7 support
+
 ## [0.6.1] 2020-10-05
 
 ### Added
